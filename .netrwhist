@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/puma/Projects/CleverTraveler/Backend'
+let g:netrw_dirhist_8='/Users/puma/Projects/CleverTraveler'
+let g:netrw_dirhist_7='/Users/puma/Projects/coni'
+let g:netrw_dirhist_6='/Users/puma/Projects/CleverTraveler'
+let g:netrw_dirhist_5='/Users/puma/.vim/init'
+let g:netrw_dirhist_4='/Users/puma/Projects/CleverTraveler'
+let g:netrw_dirhist_3='/Users/puma/Projects/coni'
+let g:netrw_dirhist_2='/Users/puma/Projects/CleverTraveler'
+let g:netrw_dirhist_1='/Users/puma/Projects'
+let g:netrw_dirhist_0='/Users/puma/Projects/CleverTraveller'
