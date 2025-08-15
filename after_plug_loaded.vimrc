@@ -1,12 +1,52 @@
+" Colorscheme
+set termguicolors
+colorscheme gruvbox
+set background=light
+set guifont=Menlo\ Nerd\ Font:h13
+
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1  " Ale with Airline
 let g:airline#extensions#bufferline#enabled = 1 " Bufferline with Airline
 let g:airline#extensions#branch#enabled = 1 " Fugitive with Airline
 
-" Bufferline
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
+
+" Get Project name
+function! GetProjectInfo()
+  if exists('g:vim_project') && !empty(g:vim_project)
+     let name = g:vim_project.name
+     let branch = g:vim_project.branch
+     if empty(branch)
+       return ''.name.'' . '  '
+     else
+       return ''.name.', '.branch.''
+     endif
+   else
+     return ''
+  endif
+endfunction
+
+function! GetPythonVersionFile() abort
+  let l:filepath = getcwd() . '/.python-version'
+  if filereadable(l:filepath)
+    let l:lines = readfile(l:filepath)
+    " Return the first line (usually the version string)
+    return len(l:lines) > 0 ? '🐍 ' . l:lines[0] . '  ' : ''
+  else
+    return ''
+  endif
+endfunction
+
+function! AirlineInit()
+  let g:airline_section_c = airline#section#create(['%{GetProjectInfo()}'])
+  " let g:airline_section_c = airline#section#create_right(['%{getcwd()}'])
+  " let g:airline_section_x = airline#section#create(['%{GetPythonVersionFile()}', 'filetype'])
+  " let g:airline_section_x = airline#section#create(['%{GetPythonVersionFile()}', '%{WebDevIconsGetFileTypeSymbol()}'])
+  let g:airline_section_x = airline#section#create(['%{GetPythonVersionFile()}'])
+  let g:airline_section_y = airline#section#create(['filetype'])
+  " let g:airline_section_z = airline#section#create(['%P'])
+endfunction
+autocmd VimEnter * call AirlineInit()
 
 " vim-auto-save
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -17,6 +57,10 @@ let wiki = {}
 let wiki.path = '~/my_wiki/'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
 let g:vimwiki_list = [wiki]
+highlight link VimwikiHeader1 ModeMsg
+highlight link VimwikiHeader2 Question
+highlight link VimwikiHeader3 Title
+nnoremap <silent> <leader>nl :call vimwiki#base#linkify()<cr>
 
 " Indent Line
 let g:indentLine_setColors = 0
@@ -42,10 +86,14 @@ let g:vindent_jumps            = 1    " make vindent motion count as a |jump-mot
 " ALE
 
 " Set linters
-let g:ale_linters = {'python': ['jedils', 'flake8']}
+let g:ale_linters = {'python': ['jedils', 'pylint', 'flake8']}
 
-let g:ale_python_jedils_use_global = 1
 let g:ale_python_flake8_use_global = 1
+let g:ale_python_autopep8_use_global = 1
+
+let g:ale_python_pylint_change_directory = 0
+" Set .pylintrc file location
+let g:ale_python_pylint_options = '--rcfile ~/Projects/.pylintrc'
 
 " Set fixers
 let g:ale_fixers = { '*': ['trim_whitespace'], 'javascript': ['eslint'], 'python': ['autopep8', 'isort'] }
@@ -62,7 +110,7 @@ nnoremap K <cmd>ALEHover<CR>
 nnoremap gd <cmd>ALEGoToDefinition<CR>
 nnoremap gr <cmd>ALEFindReferences<CR>
 nnoremap <leader>ca <cmd>ALECodeAction<CR>
-nnoremap <leader>cf <cmd>ALEFix<CR>
+nnoremap <leader>cf <cmd>ALEFix<CR><cmd>echo 'ALEFix'<CR> 
 
 set completeopt=menuone,noselect
 
@@ -86,4 +134,26 @@ nnoremap <leader>fv <cmd>CtrlP ~/.vim/init/<CR>
 nnoremap <leader>p <cmd>ProjectList<CR>
 
 " Fuzzyy
-nnoremap <leader>fw :FuzzyGrep <C-R><C-W><CR>
+let g:fuzzyy_enable_mappings = 0
+nnoremap <silent> <leader>fb :FuzzyBuffers<CR>
+nnoremap <silent> <leader>fc :FuzzyCommands<CR>
+nnoremap <silent> <leader><leader> :FuzzyFiles<CR>
+nnoremap <silent> <leader>/ :FuzzyGrep<CR>
+nnoremap <silent> <leader>fh :FuzzyHelp<CR>
+nnoremap <silent> <leader>fi :FuzzyInBuffer<CR>
+nnoremap <silent> <leader>fm :FuzzyMru<CR>
+nnoremap <silent> <leader>fp :FuzzyPrevious<CR>
+nnoremap <silent> <leader>fr :FuzzyMruCwd<CR>
+
+" Git Gutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <leader>ghs <Plug>(GitGutterStageHunk)
+nmap <leader>ghu <Plug>(GitGutterUndoHunk)
+nmap <leader>ghp <Plug>(GitGutterPreviewHunk)
+omap ih <Plug>(GitGutterTextObjectInnerPending)
+omap ah <Plug>(GitGutterTextObjectOuterPending)
+xmap ih <Plug>(GitGutterTextObjectInnerVisual)
+xmap ah <Plug>(GitGutterTextObjectOuterVisual)
+let g:gitgutter_close_preview_on_escape=1
+

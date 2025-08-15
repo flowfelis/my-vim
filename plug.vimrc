@@ -26,12 +26,13 @@ Plug 'jessekelighine/vindent.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ryanoasis/vim-devicons'
 " Plug 'obxhdx/vim-auto-highlight'
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'airblade/vim-gitgutter'
+Plug 'bagrat/vim-buffet'
 
 call plug#end()
 
