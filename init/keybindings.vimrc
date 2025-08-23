@@ -4,7 +4,7 @@ inoremap kj <ESC>
 nnoremap vl _v$h
 
 " remove highlight until next search
-nnoremap <ESC> <cmd>noh<CR>
+nnoremap <leader>d <cmd>noh<CR>
 
 " buffer movement
 nnoremap <leader>[ <cmd>bprevious<CR>
@@ -27,5 +27,13 @@ nnoremap <silent> <leader>q :bdelete<CR>
 nnoremap <leader>t <cmd>term<CR>
 tnoremap kj <C-\><C-n>
 
-" Explore with netrw
-nnoremap <leader>e <C-w>v<cmd>Exp<CR>
+" Open loclist
+nnoremap <leader>x <cmd>lopen<CR>
+
+" Copy to clipboard
+nnoremap Y "+y
+vnoremap Y "+y
+
+" Paste to clipboard
+nnoremap P "+p
+vnoremap P "+p

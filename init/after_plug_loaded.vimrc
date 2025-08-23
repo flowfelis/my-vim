@@ -2,7 +2,7 @@
 set termguicolors
 colorscheme gruvbox
 set background=light
-set guifont=Menlo\ Nerd\ Font:h13
+set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h9
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -91,9 +91,9 @@ let g:ale_linters = {'python': ['jedils', 'pylint', 'flake8']}
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_autopep8_use_global = 1
 
-let g:ale_python_pylint_change_directory = 0
+let g:ale_python_pylint_change_directory = 1
 " Set .pylintrc file location
-let g:ale_python_pylint_options = '--rcfile ~/Projects/.pylintrc'
+" let g:ale_python_pylint_options = '--rcfile ~/Projects/.pylintrc'
 
 " Set fixers
 let g:ale_fixers = { '*': ['trim_whitespace'], 'javascript': ['eslint'], 'python': ['autopep8', 'isort'] }
@@ -110,7 +110,7 @@ nnoremap K <cmd>ALEHover<CR>
 nnoremap gd <cmd>ALEGoToDefinition<CR>
 nnoremap gr <cmd>ALEFindReferences<CR>
 nnoremap <leader>ca <cmd>ALECodeAction<CR>
-nnoremap <leader>cf <cmd>ALEFix<CR><cmd>echo 'ALEFix'<CR> 
+nnoremap <leader>cf <cmd>ALEFix<CR><cmd>echo 'ALEFix'<CR>
 
 set completeopt=menuone,noselect
 
@@ -131,10 +131,10 @@ nnoremap <leader>fv <cmd>CtrlP ~/.vim/init/<CR>
 "   \ }
 
 " Vim-Project
-nnoremap <leader>p <cmd>ProjectList<CR>
+nnoremap <leader>o <cmd>ProjectList<CR>
 
-" Fuzzyy
-let g:fuzzyy_enable_mappings = 0
+" FuzzBox
+let g:fuzzbox_enable_mappings = 0
 nnoremap <silent> <leader>fb :FuzzyBuffers<CR>
 nnoremap <silent> <leader>fc :FuzzyCommands<CR>
 nnoremap <silent> <leader><leader> :FuzzyFiles<CR>
@@ -157,3 +157,5 @@ xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 let g:gitgutter_close_preview_on_escape=1
 
+" NERDTree
+nmap <leader>e <cmd>NERDTreeToggle<CR>

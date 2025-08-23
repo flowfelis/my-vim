@@ -16,6 +16,12 @@ let g:which_key_map.l = 'right pane'
 let g:which_key_map.v = 'Vertical Split'
 let g:which_key_map.s = 'Horizontal Split'
 
+" Highlighting
+let g:which_key_map.d = 'No highlighting'
+
+" Open Loclist
+let g:which_key_map.x = 'Open LocList'
+
 " Close
 let g:which_key_map.w = 'Close window'
 let g:which_key_map.q = 'Close Buffer'

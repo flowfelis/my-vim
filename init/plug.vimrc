@@ -14,7 +14,7 @@ Plug 'dense-analysis/ale'
 Plug 'wellle/targets.vim'
 Plug 'vimwiki/vimwiki'
 Plug '907th/vim-auto-save'
-Plug 'Donaldttt/fuzzyy'
+Plug 'vim-fuzzbox/fuzzbox.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Plug 'Yggdroot/indentLine'
@@ -33,6 +33,7 @@ Plug 'mhinz/vim-startify'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'airblade/vim-gitgutter'
 Plug 'bagrat/vim-buffet'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
