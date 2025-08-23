@@ -33,7 +33,3 @@ nnoremap <leader>x <cmd>lopen<CR>
 " Copy to clipboard
 nnoremap Y "+y
 vnoremap Y "+y
-
-" Paste to clipboard
-nnoremap P "+p
-vnoremap P "+p
