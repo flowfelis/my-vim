@@ -131,7 +131,7 @@ nnoremap <leader>fv <cmd>CtrlP ~/.vim/init/<CR>
 "   \ }
 
 " Vim-Project
-nnoremap <leader>o <cmd>ProjectList<CR>
+nnoremap <leader>p <cmd>ProjectList<CR>
 
 " FuzzBox
 let g:fuzzbox_enable_mappings = 0
