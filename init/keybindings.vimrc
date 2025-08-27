@@ -33,3 +33,6 @@ nnoremap <leader>x <cmd>lopen<CR>
 " Copy to clipboard
 nnoremap Y "+y
 vnoremap Y "+y
+
+" Enter Today's Date
+nnoremap <C-d> a<C-R>=strftime("%A, %d %B %Y")<CR><Esc>
