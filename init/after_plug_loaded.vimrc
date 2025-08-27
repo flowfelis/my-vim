@@ -1,7 +1,7 @@
 " Colorscheme
 set termguicolors
 colorscheme gruvbox
-set background=light
+set background=dark
 set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h9
 
 " Airline
@@ -86,7 +86,7 @@ let g:vindent_jumps            = 1    " make vindent motion count as a |jump-mot
 " ALE
 
 " Set linters
-let g:ale_linters = {'python': ['jedils', 'pylint', 'flake8']}
+let g:ale_linters = {'python': ['jedils', 'pylint']}
 
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_autopep8_use_global = 1
